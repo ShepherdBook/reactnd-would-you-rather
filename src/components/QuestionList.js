@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import QuestionDetail from './QuestionDetail'
-import User from './User';
 
-class Dashboard extends Component {
+
+
+class QuestionList extends Component {
   state = {
     showAnsweredQuestions: false
   }
@@ -12,7 +13,6 @@ class Dashboard extends Component {
   render() {
     return (
       <div>
-        <User />
         <h3>Unanswered Questions</h3>
         <ul>
           {this.props.unansweredQuestionIds.map((id) => (
@@ -44,4 +44,4 @@ function mapStateToProps({ questions }) {
   }
 }
 
-export default connect(mapStateToProps)(Dashboard)
+export default connect(mapStateToProps)(QuestionList)
