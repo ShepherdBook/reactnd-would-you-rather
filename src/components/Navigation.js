@@ -1,10 +1,14 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import User from './User'
 
-export default function Navigation () {
+export default function Navigation() {
   return (
     <nav className='nav'>
       <ul>
+        <li>
+          <User />
+        </li>
         <li>
           <NavLink to='/' exact activeClassName='active'>
             Home
