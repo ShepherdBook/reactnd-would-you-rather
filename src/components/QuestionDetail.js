@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { formatDate } from '../utils/helpers'
 
-class Question extends Component {
+class QuestionDetail extends Component {
   render() {
-    const { question, author, users, userCount } = this.props
+    const { question, author, userCount } = this.props
 
     const optionOneVoteCount = question.optionOne.votes.length
     const optionTwoVoteCount = question.optionTwo.votes.length
@@ -43,4 +43,4 @@ function mapStateToProps({ activeUser, users, questions }, { id }) {
   }
 }
 
-export default connect(mapStateToProps)(Question)
+export default connect(mapStateToProps)(QuestionDetail)

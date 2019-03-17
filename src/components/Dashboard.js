@@ -1,19 +1,23 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import Question from './Question'
+import QuestionDetail from './QuestionDetail'
+import User from './User';
 
 class Dashboard extends Component {
-
+  state = {
+    showAnsweredQuestions: false
+  }
   // local state to track showAnsweredQuestions toggle
 
   render() {
     return (
       <div>
+        <User />
         <h3>Unanswered Questions</h3>
         <ul>
           {this.props.unansweredQuestionIds.map((id) => (
             <li key={id}>
-              <Question id={id} />
+              <QuestionDetail id={id} />
             </li>
           ))}
         </ul>
@@ -21,7 +25,7 @@ class Dashboard extends Component {
         <ul>
           {this.props.answeredQuestionIds.map((id) => (
             <li key={id}>
-              <Question id={id} />
+              <QuestionDetail id={id} />
             </li>
           ))}
         </ul>
