@@ -4,8 +4,11 @@ import { connect } from 'react-redux'
 import { handleInitialData } from '../actions/shared'
 import LoadingBar from 'react-redux-loading'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
-import User from './User'
 import Navigation from './Navigation'
+import QuestionNew from './QuestionNew'
+import Leaderboard from './Leaderboard'
+import Login from './Login'
+import QuestionDetail from './QuestionDetail'
 
 class App extends Component {
 
@@ -24,9 +27,10 @@ class App extends Component {
               : <div>
                   <Navigation />
                   <Route path='/' exact component={QuestionList} />
-                  {/* <Route path='leaderboard' exact component={Leaderboard} />
-                  <Route path='new' exact component={NewQuestion} />
-                  <Route path='login' exact component={Login} /> */}
+                  <Route path='/questions/:id' component={QuestionDetail} />
+                  <Route path='/new' component={QuestionNew} />
+                  <Route path='/leaderboard' component={Leaderboard} />
+                  <Route path='/login' component={Login} />
                 </div>}
           </div>
         </Fragment>
