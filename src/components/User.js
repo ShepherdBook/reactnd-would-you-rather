@@ -6,14 +6,14 @@ class User extends Component {
     const { user } = this.props
     return (
       <div>
-        <img src={user.avatarURL} className='avatar' alt={`Avatar of ${user.name}`} /> | {user.name}
+        <img src={user.avatarURL} className='avatar' alt={`Avatar of ${user.name}`} /> | {user.name} | {user.questions.length} questions | {Object.keys(user.answers).length} answers
       </div>
     )
   }
 }
 
-function mapStateToProps({ activeUser, users }) {
-  const user = users[activeUser]
+function mapStateToProps({ users }, { id }) {
+  const user = users[id]
   return { user }
 }
 

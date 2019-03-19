@@ -25,7 +25,7 @@ class App extends Component {
             {this.props.loading === true
               ? null
               : <div>
-                  <Navigation />
+                  <Navigation id={this.props.activeUser} />
                   <Route path='/' exact component={QuestionList} />
                   <Route path='/questions/:id' component={QuestionDetail} />
                   <Route path='/new' component={QuestionNew} />
@@ -41,6 +41,7 @@ class App extends Component {
 
 function mapStateToProps({ activeUser }) {
   return {
+    activeUser,
     loading: activeUser === null
   }
 }
