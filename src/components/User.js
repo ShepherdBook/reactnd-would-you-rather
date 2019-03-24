@@ -6,7 +6,7 @@ class User extends Component {
     const { user } = this.props
     return (
       <div>
-        <img src={user.avatarURL} className='avatar' alt={`Avatar of ${user.name}`} /> | {user.name} | {user.questions.length} questions | {Object.keys(user.answers).length} answers
+        <img src={user.avatarURL} className='avatar' alt={`Avatar of ${user.name}`} /> | {user.name}
       </div>
     )
   }
