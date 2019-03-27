@@ -1,4 +1,4 @@
-import { RECEIVE_USERS } from '../actions/users'
+import { RECEIVE_USERS, ADD_QUESTION_TO_HISTORY } from '../actions/users'
 
 // Deals with the "Users" slice of state
 export default function users(state = {} , action) {
@@ -7,6 +7,21 @@ export default function users(state = {} , action) {
       return { // Return the existing users plus the action's users
         ...state,
         ...action.users
+      }
+    case ADD_QUESTION_TO_HISTORY:
+      const { activeUser, questionId } = action
+
+      let author = {}
+      author = {
+          [activeUser]: { // Find the author
+            ...state[activeUser], // Get the existing properties of it
+            questions: state[activeUser].questions.concat([questionId]) // Set the questions equal to the old questions plus the new one
+          }
+        }
+
+      return {
+        ...state,
+        ...author
       }
     default:
       return state
