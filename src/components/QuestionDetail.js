@@ -20,8 +20,8 @@ class QuestionDetail extends Component {
     return (
       <div>
         <h3>Would you rather...</h3>
-        <p>{question.optionOne.text} {optionOnePercentage}% chose this ({optionOneVoteCount})</p>
-        <p>{question.optionTwo.text} {optionTwoPercentage}% chose this ({optionTwoVoteCount})</p>
+        <p><b>{question.optionOne.text}</b> - {optionOnePercentage}% chose this ({optionOneVoteCount})</p>
+        <p><b>{question.optionTwo.text}</b> - {optionTwoPercentage}% chose this ({optionTwoVoteCount})</p>
         <p>Asked by {author.name} on {formatDate(question.timestamp)}</p>
 
       </div>
