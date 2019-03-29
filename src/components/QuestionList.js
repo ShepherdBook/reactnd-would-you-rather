@@ -32,14 +32,14 @@ class QuestionList extends Component {
   }
 }
 
-function mapStateToProps({ questions }) {
+function mapStateToProps({ questions, activeUser }) {
 
   return {
     answeredQuestionIds: Object.keys(questions)
-      .filter(key => (questions[key].optionOne.votes.length > 0 || questions[key].optionTwo.votes.length > 0))
+      .filter(key => (questions[key].optionOne.votes.includes(activeUser) || questions[key].optionTwo.votes.includes(activeUser)))
       .sort((a, b) => questions[b].timestamp - questions[a].timestamp),
     unansweredQuestionIds: Object.keys(questions)
-      .filter(key => (questions[key].optionOne.votes.length === 0 && questions[key].optionTwo.votes.length === 0))
+      .filter(key => (!questions[key].optionOne.votes.includes(activeUser) && !questions[key].optionTwo.votes.includes(activeUser)))
       .sort((a, b) => questions[b].timestamp - questions[a].timestamp),
   }
 }
