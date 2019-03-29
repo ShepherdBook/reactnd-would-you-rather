@@ -1,5 +1,23 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+### Example
+Creating a new question should add the question's id to the user's question list:
+```
+function users(state, action){
+  case ADD_QUESTION:
+    const _author = state[action.author];
+    return {
+      ...state,
+      [action.author]: {
+        ..._author,
+        questions: [..._author.questions, action.qid ]
+      }
+    }
+  default:
+    return state;
+}
+```
+
 ## Available Scripts
 
 In the project directory, you can run:
