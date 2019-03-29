@@ -25,7 +25,9 @@ class App extends Component {
             {this.props.loading === true
               ? null
               : <div>
-                  <Navigation id={this.props.activeUser} />
+                  {this.props.activeUser && (
+                    <Navigation id={this.props.activeUser} />
+                  )}
                   <Route path='/' exact component={QuestionList} />
                   <Route path='/questions/:id' component={QuestionDetail} />
                   <Route path='/new' component={QuestionNew} />
