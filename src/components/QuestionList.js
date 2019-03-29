@@ -36,8 +36,10 @@ function mapStateToProps({ questions }) {
 
   return {
     answeredQuestionIds: Object.keys(questions)
+      .filter(key => (questions[key].optionOne.votes.length > 0 || questions[key].optionTwo.votes.length > 0))
       .sort((a, b) => questions[b].timestamp - questions[a].timestamp),
     unansweredQuestionIds: Object.keys(questions)
+      .filter(key => (questions[key].optionOne.votes.length === 0 && questions[key].optionTwo.votes.length === 0))
       .sort((a, b) => questions[b].timestamp - questions[a].timestamp),
   }
 }
