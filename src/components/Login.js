@@ -1,8 +1,18 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import User from './User'
+import { setActiveUser } from '../actions/activeUser'
 
 class Login extends Component {
+
+  handleClick = (e, id) => {
+    e.preventDefault()
+
+    const { dispatch } = this.props
+
+    dispatch(setActiveUser(id))
+  }
+
   render() {
     return (
       <div>
@@ -11,7 +21,9 @@ class Login extends Component {
         <ul>
           {this.props.userIds.map((id) => (
             <li key={id}>
-              <User id={id} />
+              <button onClick={(e) => this.handleClick(e, id)}>
+                <User id={id} />
+              </button>
             </li>
           ))}
         </ul>
@@ -20,10 +32,11 @@ class Login extends Component {
   }
 }
 
-function mapStateToProps({ users }) {
+function mapStateToProps({ users, dispatch }) {
   const userIds = Object.keys(users)
   return {
-    userIds
+    userIds,
+    dispatch
   }
 }
 
