@@ -1,9 +1,18 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 import User from './User'
 import { setActiveUser } from '../actions/activeUser'
 
 class Login extends Component {
+
+  state = {
+    toHome: false
+  }
+
+  // componentDidMount() {
+  //   this.props.dispatch(setActiveUser(null))
+  // }
 
   handleClick = (e, id) => {
     e.preventDefault()
@@ -11,9 +20,18 @@ class Login extends Component {
     const { dispatch } = this.props
 
     dispatch(setActiveUser(id))
+
+    this.setState(() => ({
+      toHome: true
+    }))
   }
 
   render() {
+
+    if (this.state.toHome) {
+      return <Redirect to='/' />
+    }
+
     return (
       <div>
         <h1>Login</h1>
