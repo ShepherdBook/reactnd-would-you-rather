@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Link, withRouter } from 'react-router-dom'
 import { formatDate } from '../utils/helpers'
 
 class QuestionUnanswered extends Component {
@@ -7,13 +8,15 @@ class QuestionUnanswered extends Component {
     const { question, author } = this.props
 
     return (
-      <div>
-        <h3>Would you rather...</h3>
-        <p>{question.optionOne.text}</p>
-        <p>{question.optionTwo.text}</p>
-        <img src={author.avatarURL} className='avatar' alt={`Avatar of ${author.name}`} />
-        <p>{formatDate(question.timestamp)}</p>
-      </div>
+      <Link to={`/questions/${question.id}`}>
+        <div>
+          <h3>Would you rather...</h3>
+          <p>{question.optionOne.text}</p>
+          <p>{question.optionTwo.text}</p>
+          <img src={author.avatarURL} className='avatar' alt={`Avatar of ${author.name}`} />
+          <p>{formatDate(question.timestamp)}</p>
+        </div>
+      </Link>
     )
   }
 }
@@ -28,4 +31,4 @@ function mapStateToProps({ users, questions }, { id }) {
   }
 }
 
-export default connect(mapStateToProps)(QuestionUnanswered)
+export default withRouter(connect(mapStateToProps)(QuestionUnanswered))

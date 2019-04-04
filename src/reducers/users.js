@@ -1,4 +1,4 @@
-import { RECEIVE_USERS, ADD_QUESTION_TO_HISTORY } from '../actions/users'
+import { RECEIVE_USERS, ADD_QUESTION_TO_HISTORY, ADD_VOTE_TO_USER } from '../actions/users'
 
 // Deals with the "Users" slice of state
 export default function users(state = {} , action) {
@@ -10,7 +10,6 @@ export default function users(state = {} , action) {
       }
     case ADD_QUESTION_TO_HISTORY:
       const { activeUser, questionId } = action
-
       let author = {}
       author = {
           [activeUser]: { // Find the author
@@ -18,10 +17,21 @@ export default function users(state = {} , action) {
             questions: state[activeUser].questions.concat([questionId]) // Set the questions equal to the old questions plus the new one
           }
         }
-
       return {
         ...state,
         ...author
+      }
+    case ADD_VOTE_TO_USER:
+      const { authedUser, qid, answer } = action
+      return {
+        ...users,
+        [authedUser]: {
+          ...users[authedUser],
+          answers: {
+            ...users[authedUser].answers,
+            [qid]: answer
+          }
+        }
       }
     default:
       return state

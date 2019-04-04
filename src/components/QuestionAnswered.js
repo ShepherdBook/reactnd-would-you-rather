@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Link, withRouter } from 'react-router-dom'
 import { formatDate } from '../utils/helpers'
 
 class QuestionAnswered extends Component {
@@ -26,15 +27,17 @@ class QuestionAnswered extends Component {
       question.optionTwo.votes.includes(activeUser)
 
     return (
-      <div>
-        <h3>Would you rather...</h3>
-        <p><b>{question.optionOne.text}</b> - {optionOnePercentage}% chose this ({optionOneVoteCount})</p>
-        <p><b>{question.optionTwo.text}</b> - {optionTwoPercentage}% chose this ({optionTwoVoteCount})</p>
-        {activeUserAnsweredOne && <p>You said {question.optionOne.text}!</p>}
-        {activeUserAnsweredTwo && <p>You said {question.optionTwo.text}!</p>}
-        <img src={author.avatarURL} className='avatar' alt={`Avatar of ${author.name}`} />
-        <p>{formatDate(question.timestamp)}</p>
-      </div>
+      <Link to={`/questions/${question.id}`}>
+        <div>
+          <h3>Would you rather...</h3>
+          <p><b>{question.optionOne.text}</b> - {optionOnePercentage}% chose this ({optionOneVoteCount})</p>
+          <p><b>{question.optionTwo.text}</b> - {optionTwoPercentage}% chose this ({optionTwoVoteCount})</p>
+          {activeUserAnsweredOne && <p>You said {question.optionOne.text}!</p>}
+          {activeUserAnsweredTwo && <p>You said {question.optionTwo.text}!</p>}
+          <img src={author.avatarURL} className='avatar' alt={`Avatar of ${author.name}`} />
+          <p>{formatDate(question.timestamp)}</p>
+        </div>
+      </Link>
     )
   }
 }
@@ -53,4 +56,4 @@ function mapStateToProps({ activeUser, users, questions }, { id }) {
   }
 }
 
-export default connect(mapStateToProps)(QuestionAnswered)
+export default withRouter(connect(mapStateToProps)(QuestionAnswered))
