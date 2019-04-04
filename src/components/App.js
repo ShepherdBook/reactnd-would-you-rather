@@ -7,7 +7,6 @@ import Navigation from './Navigation'
 import QuestionNew from './QuestionNew'
 import Leaderboard from './Leaderboard'
 import Login from './Login'
-import QuestionDetail from './QuestionDetail'
 
 class App extends Component {
 
@@ -24,7 +23,6 @@ class App extends Component {
               <Fragment>
                   <Navigation id={this.props.activeUser} />
                   <Route path='/' exact component={QuestionList} />
-                  <Route path='/questions/:id' component={QuestionDetail} />
                   <Route path='/new' component={QuestionNew} />
                   <Route path='/leaderboard' component={Leaderboard} />
                   <Route path='/login' component={Login} />

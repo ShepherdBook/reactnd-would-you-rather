@@ -1,12 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import QuestionDetail from './QuestionDetail'
+import QuestionUnanswered from './QuestionUnanswered';
+import QuestionAnswered from './QuestionAnswered';
 
 class QuestionList extends Component {
-  state = {
-    showAnsweredQuestions: false
-  }
-  // local state to track showAnsweredQuestions toggle
 
   render() {
     return (
@@ -15,7 +12,7 @@ class QuestionList extends Component {
         <ul>
           {this.props.unansweredQuestionIds.map((id) => (
             <li key={id}>
-              <QuestionDetail id={id} />
+              <QuestionUnanswered id={id} />
             </li>
           ))}
         </ul>
@@ -23,7 +20,7 @@ class QuestionList extends Component {
         <ul>
           {this.props.answeredQuestionIds.map((id) => (
             <li key={id}>
-              <QuestionDetail id={id} />
+              <QuestionAnswered id={id} />
             </li>
           ))}
         </ul>
