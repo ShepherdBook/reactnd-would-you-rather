@@ -22,13 +22,13 @@ export default function users(state = {} , action) {
         ...author
       }
     case ADD_VOTE_TO_USER:
-      const { authedUser, qid, answer } = action
+      const { qid, answer } = action
       return {
         ...users,
-        [authedUser]: {
-          ...users[authedUser],
+        [action.activeUser]: {
+          ...state[action.activeUser],
           answers: {
-            ...users[authedUser].answers,
+            ...state[action.activeUser].answers,
             [qid]: answer
           }
         }
