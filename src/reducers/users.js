@@ -8,7 +8,7 @@ export default function users(state = {} , action) {
         ...state,
         ...action.users
       }
-    case ADD_QUESTION_TO_HISTORY:
+    case ADD_QUESTION_TO_HISTORY: {
       const { activeUser, questionId } = action
       let author = {}
       author = {
@@ -21,18 +21,20 @@ export default function users(state = {} , action) {
         ...state,
         ...author
       }
-    case ADD_VOTE_TO_USER:
-      const { authedUser, qid, answer } = action
+    }
+    case ADD_VOTE_TO_USER: {
+      const { activeUser, qid, answer } = action
       return {
-        ...users,
-        [authedUser]: {
-          ...users[authedUser],
+        ...state,
+        [activeUser]: {
+          ...state[activeUser],
           answers: {
-            ...users[authedUser].answers,
+            ...state[activeUser].answers,
             [qid]: answer
           }
         }
       }
+    }
     default:
       return state
   }

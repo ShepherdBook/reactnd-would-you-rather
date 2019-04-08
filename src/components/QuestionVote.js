@@ -20,6 +20,8 @@ class QuestionVote extends Component {
 
     const { activeUser, question, author } = this.props
 
+    //console.log('The saved question ', question)
+
     const activeUserAnsweredOne = 
       question.optionOne.votes.includes(activeUser)
 
