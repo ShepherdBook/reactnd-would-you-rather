@@ -10,7 +10,7 @@ class QuestionUnanswered extends Component {
     return (
       <Link to={`/questions/${question.id}`}>
         <div>
-          <h3>Would you rather...</h3>
+          <strong>Would you rather...</strong>
           <p>{question.optionOne.text}</p>
           <p>{question.optionTwo.text}</p>
           <img src={author.avatarURL} className='avatar' alt={`Avatar of ${author.name}`} />

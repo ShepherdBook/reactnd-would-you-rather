@@ -29,7 +29,7 @@ class QuestionAnswered extends Component {
     return (
       <Link to={`/questions/${question.id}`}>
         <div>
-          <h3>Would you rather...</h3>
+          <strong>Would you rather...</strong>
           <p><b>{question.optionOne.text}</b> - {optionOnePercentage}% chose this ({optionOneVoteCount})</p>
           <p><b>{question.optionTwo.text}</b> - {optionTwoPercentage}% chose this ({optionTwoVoteCount})</p>
           {activeUserAnsweredOne && <p>You said {question.optionOne.text}!</p>}

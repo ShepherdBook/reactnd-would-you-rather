@@ -53,6 +53,8 @@ function mapStateToProps({ activeUser, questions, users }, props) {
   const question = questions[id]
   const author = users[question.author]
 
+  console.log('Users', users)
+
   return {
     id,
     activeUser,
