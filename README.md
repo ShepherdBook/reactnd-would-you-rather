@@ -1,22 +1,8 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Would You Rather
 
-### Example
-Creating a new question should add the question's id to the user's question list:
-```
-function users(state, action){
-  case ADD_QUESTION:
-    const _author = state[action.author];
-    return {
-      ...state,
-      [action.author]: {
-        ..._author,
-        questions: [..._author.questions, action.qid ]
-      }
-    }
-  default:
-    return state;
-}
-```
+This is my version of the Would You Rather project of the Udacity React Nanodegree. It allows a user to view, create, and vote on "Would you rather X or Y?" style questions.  Users can also view a leaderboard of all users, ranked by number of questions asked and answered.
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
@@ -60,27 +46,3 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
