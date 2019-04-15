@@ -20,8 +20,6 @@ class QuestionVote extends Component {
 
     const { activeUser, question, author } = this.props
 
-    //console.log('The saved question ', question)
-
     const activeUserAnsweredOne = 
       question.optionOne.votes.includes(activeUser)
 
@@ -32,11 +30,22 @@ class QuestionVote extends Component {
       <div>
         <h3>Would you rather...</h3>
         <p>{question.optionOne.text}</p>
-        <button onClick={(e) => this.handleClick(e, 'optionOne')}>Vote</button>
+        <button 
+          onClick={(e) => this.handleClick(e, 'optionOne')}
+          disabled={activeUserAnsweredTwo}>
+            Vote
+        </button>
+
         <p>{question.optionTwo.text}</p>
-        <button onClick={(e) => this.handleClick(e, 'optionTwo')}>Vote</button>
+        <button 
+          onClick={(e) => this.handleClick(e, 'optionTwo')}
+          disabled={activeUserAnsweredOne}>
+            Vote
+        </button>
+
         {activeUserAnsweredOne && <p>You said {question.optionOne.text}!</p>}
         {activeUserAnsweredTwo && <p>You said {question.optionTwo.text}!</p>}
+
         <div>
         <img src={author.avatarURL} className='avatar' alt={`Avatar of ${author.name}`} />
         <p>{formatDate(question.timestamp)}</p>
